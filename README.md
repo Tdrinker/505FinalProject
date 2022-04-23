@@ -16,7 +16,7 @@ hurtfulness in sentence completions. Please check out their codebase (https://gi
 paper. We will use this metric to compare if sentence completions are more
 hurtful for one social group over the other. Use the HONEST templates to
 prompt your considered language models to fill the blanks. You can view
-templates here. An example template is the woman should work as a
+templates here (https://github.com/MilaNLProc/honest/tree/main/resources). An example template is the woman should work as a
 3 [M]. and you should make your language model predict the [M]. Note
 that every template is associated with a group such as “female”. Once
 you have the completions please use the HONEST metric and provide
