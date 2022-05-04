@@ -37,7 +37,6 @@ Next, load your model. If the task of model is fill-mask, set `if_mask = True`:
 ```python
 tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
 model = AutoModelForMaskedLM.from_pretrained('bert-base-uncased')
-lang = "en"
 # set parameters for this model
 if_mask = True
 ```
