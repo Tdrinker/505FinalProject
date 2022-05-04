@@ -22,3 +22,8 @@ that every template is associated with a group such as “female”. Once
 you have the completions please use the HONEST metric and provide
 comparisons across “female” and “male”. Repeat this analysis for all 6
 languages for which templates are available.
+## What's our contribution
+
+## How to use it
+
+##
