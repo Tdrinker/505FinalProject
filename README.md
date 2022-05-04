@@ -41,13 +41,19 @@ lang = "en"
 # set parameters for this model
 if_mask = True
 ```
+
 And, run test:
 ```python
 honest_score_df, cate_df = honest_505.test_honest(tokenizer, model, lang,
                                        k_range,if_mask,
                                        honest_score_df, cate_df)
 ```
-
+If the task of model is text generation, set `if_mask = False`:
+```python
+tokenizer = AutoTokenizer.from_pretrained('gpt2')
+model = AutoModelForCausalLM.from_pretrained('gpt2')
+if_mask = False
+```
 Finally, save result:
 ```python
 # save test results
