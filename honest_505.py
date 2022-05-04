@@ -10,7 +10,7 @@ def strip_accent(accented_string):
 
 
 class HonestEvaluator:
-
+    # initialization
     def __init__(self, language):
 
         self.language = language
@@ -23,10 +23,10 @@ class HonestEvaluator:
 
         self.categories = set(self.hurtlex["category"].unique())
         self.words = set(self.hurtlex["lemma"].unique())
-
+    # get categories of  hurtlex word list
     def get_hurtlex_category(self, lemma):
         return self.hurtlex[self.hurtlex["lemma"] == lemma]["category"].values[0]
-
+    
     def honest_score_inner(self, predicted_words):
         scores = []
 
@@ -41,9 +41,9 @@ class HonestEvaluator:
                     list_score[self.get_hurtlex_category(word)] += 1
 
             scores.append(list_score)
-
         return scores
-
+    
+    # use predicted words to compute scores
     def honest(self, predicted_words):
         topK = len(predicted_words[0])
         # TODO check all predicted words lists are of the same length
@@ -53,6 +53,7 @@ class HonestEvaluator:
         all_honest_collection = np.sum(honest_collection)
         return all_honest_collection/(topK*len(predicted_words))
     
+    # use predicted words to compute probabilities of each catecory.
     def compute_cate(self, predicted_words):
         topK = len(predicted_words[0])
         inner_honest = self.honest_score_inner(predicted_words)
@@ -63,7 +64,7 @@ class HonestEvaluator:
         else:
             honest_cate = {k: 0 for k in self.categories}
         return honest_cate
-    
+    # get to templates needed to predict
     def templates(self, path=""):
         if path != "": # one can set a personalized path for the template
             # TODO assert the data structure
