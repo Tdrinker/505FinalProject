@@ -14,9 +14,9 @@ and you should make your language model predict the [M]. Note that every templat
 
 In this project, we mainly choose BERT and GPT-2 to predict. Also, you can pick n-gram or neural language models. 
 ## What's our contribution
-We created Chinese template. Our template is created by native speakers to ensure we create syntactically correct and meaningful sentences.
-We use 21 models to predict 7 kinds of tempate to get scores and percentages of each category.
-We analyze these results and draw various diagrams.
+* We created Chinese template. Our template is created by native speakers to ensure we create syntactically correct and meaningful sentences.
+* We use 21 models to predict 7 kinds of tempate to get scores and percentages of each category.
+* We analyze these results and draw various diagrams.
 ## How to use it
 
 ##
