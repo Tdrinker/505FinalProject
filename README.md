@@ -14,9 +14,45 @@ and you should make your language model predict the [M]. Note that every templat
 
 In this project, we mainly choose BERT and GPT-2 to predict. Also, you can pick n-gram or neural language models. 
 ## What's our contribution
-* We created Chinese template. Our template is created by native speakers to ensure we create syntactically correct and meaningful sentences.
+* We created Chinese template. Our template was created by native speakers to ensure we create syntactically correct and meaningful sentences.
 * We used 21 models to predict 7 kinds of tempate to get scores and percentages of each category.
 * We analyzed these results and drawed various diagrams.
 ## How to use it
+First, import our functions and pandas package:
+```python
+import pandas as pd
+import honest_505
+```
+Then, set parameters for the test:
+```python
+k_range = [1,5,15]
+# generate columns names for scores dataframe
+columns_names_scores =[str(k) + "_" +gender for k in k_range for gender in ["female","male"]]
+lang = 'en'
+honest_score_df = pd.DataFrame(columns = columns_names_scores)
+# creat a dataframe to save percentages of hurtful words for each category
+cate_df = pd.DataFrame()
+```
+Next, load your model. If the task of model is fill-mask, set `if_mask = True`:
+```python
+tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+model = AutoModelForMaskedLM.from_pretrained('bert-base-uncased')
+lang = "en"
+# set parameters for this model
+if_mask = True
+```
+And, run test:
+```python
+honest_score_df, cate_df = honest_505.test_honest(tokenizer, model, lang,
+                                       k_range,if_mask,
+                                       honest_score_df, cate_df)
+```
 
-##
+Finally, save result:
+```python
+# save test results
+save_data(lang, honest_score_df, cate_df)
+```
+## Other resouses
+* Templates are in `templates/`, and they are from (https://github.com/MilaNLProc/honest) except Chinese template
+* Our test results are saved in `experiment_results/`
